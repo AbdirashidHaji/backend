@@ -1,5 +1,4 @@
 const db  = require("../Model/dbConnect")
-// const studentModel = require("../model/studentModel")
 const students =db.students
 module.exports={
 

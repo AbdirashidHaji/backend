@@ -1,5 +1,5 @@
 
-
+const { authSchema } = require("../Helpers/validateScimmer")
 
 
 
@@ -10,8 +10,8 @@ module.exports = {
     //add user
     addUser :async(req,res,next)=>{
         try {
-            const {email , password}= req.body;
-            const exists = await User.findOne({wher: {email}})
+            const {email , password}=  await authSchema.validateAsync (req.body);
+            const exists = await User.findOne({where: {email}})
             if(exists) {
                 throw createHttpError.Conflict('${email} has already been registered')
             }
